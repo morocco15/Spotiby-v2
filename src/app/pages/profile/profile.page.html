@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="profile" *ngIf="this.authService.user">
+    <ion-button (click)="authService.refresh()" Expand="full">Refresh</ion-button>
+    <ion-button (click)="authService.signOut()" Expand="full">Logout</ion-button>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img [src]="this.authService.user.profilPicture"/>
+      </ion-avatar>
+      <ion-label>
+        {{this.authService.user.fName}} {{ this.authService.user.lName }}
+        <p>{{this.authService.user.email}}</p>
+      </ion-label>
+    </ion-item>
+  </div>
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header [translucent]="true" style="padding-bottom: 10%">
+  <ion-toolbar>
+    <ion-title style="text-align: center">Spotiby - {{this.user.email}}</ion-title>
+    <ion-icon size="large" name="arrow-back-outline" slot="start" (click)="pagePrecedente()"></ion-icon>
+    <ion-icon size="large" name="share-social" slot="end" (click)="sharePlaylist()" *ngIf="isOwner"></ion-icon>
+    <ion-icon size="large" name="trash-bin" slot="end" (click)="desabonnerPlaylist()" *ngIf="isUserR || isUserRW"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-list *ngIf="!isEmpty">
+      <ion-item-sliding *ngFor="let item of listemusique | async">
+        <ion-item>
+          <ion-label style="text-align: center">{{item.title}}</ion-label>
+        </ion-item>
+        <ion-item-options side="end" *ngIf="isOwner || isUserRW">
+          <ion-item-option (click)="deleteMusique(item.Id)">Delete</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+    <div *ngIf="isEmpty && isOwner" style="text-align: center">
+      Vous n'avez pas de musique, importez en une !
+    </div>
+    <div *ngIf="isEmpty && isUserRW" style="text-align: center">
+      Cette playlist a été partagée avec vous mais elle est vide ! Importez une musique pour la voir apparaître ici !
+    </div>
+    <div *ngIf="isEmpty && isUserR" style="text-align: center">
+      Cette playlist a été partagée avec vous mais elle est vide ! Demandez au propriétaire d'y ajouter des
+      musiques pour les voir apparaître ici !
+    </div>
+  </div>
+  <div>
+    <button id="boutonAjout" (click)="openModal()" *ngIf="isOwner || isUserRW">+</button>
+    <button id="boutonAjout2" *ngIf="isUserR">+</button>
+  </div>
+</ion-content>

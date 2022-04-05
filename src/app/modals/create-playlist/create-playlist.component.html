@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Ajout d'une playlist</ion-title>
+    <ion-icon size="large" name="close" slot="end" (click)="closeModal()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<form [formGroup]="playlistForm">
+
+  <div id="container">
+    <ion-item>
+      <ion-label position="stacked" class="label">Titre de la playlist</ion-label>
+      <ion-input formControlName="title" [(ngModel)]="newPlaylist.title"></ion-input>
+    </ion-item>
+    <ion-button  expand="block" (click)="addPlaylist()" type="submit">Validate</ion-button>
+  </div>
+</form>

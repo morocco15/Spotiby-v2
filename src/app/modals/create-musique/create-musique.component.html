@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Ajout d'une musique</ion-title>
+    <ion-icon size="large" name="close" slot="end" (click)="closeModal()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<form [formGroup]="musiqueForm">
+
+  <div id="container">
+    <ion-item>
+      <ion-label position="stacked" class="label">Titre de la musique</ion-label>
+      <ion-input formControlName="title" [(ngModel)]="newMusique.title"></ion-input>
+    </ion-item>
+    <ion-button  expand="block" (click)="addMusique()" type="submit">Validate</ion-button>
+  </div>
+</form>

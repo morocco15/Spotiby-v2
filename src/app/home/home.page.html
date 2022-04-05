@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="text-align: center">Connexion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <form [formGroup]="ionicForm" (ngSubmit)="login()" novalidate>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" required formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input type="password" required formControlName="password"></ion-input>
+      </ion-item>
+      <ion-button  expand="full" type="submit">Se connecter</ion-button>
+    </form>
+
+    <ion-button (click)="this.router.navigate(['register'])" Expand="full">S'enregistrer</ion-button>
+    <ion-button (click)="signIn()" Expand="full">Se connecter avec google</ion-button>
+  </div>
+
+
+</ion-content>

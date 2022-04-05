@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Partager sa playlist</ion-title>
+    <ion-icon size="large" name="close" slot="end" (click)="closeModal()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<form [formGroup]="sharePlaylistForm">
+
+  <div id="container">
+    <ion-item>
+      <ion-label position="stacked" class="label">Droits accordés à cette personne</ion-label>
+      <ion-select placeholder="Choisir le rôle" class="label" formControlName="role" [(ngModel)]="newPlaylistShared.role">
+        <ion-select-option value="Lecture" >Lecture</ion-select-option>
+        <ion-select-option value="Lecture et écriture">Lecture et écriture</ion-select-option>
+      </ion-select>
+      <ion-label position="stacked" class="label">Adresse mail de la personne avec qui vous voulez partager votre playlist</ion-label>
+      <ion-input formControlName="email" [(ngModel)]="newPlaylistShared.email"></ion-input>
+    </ion-item>
+    <ion-button  expand="block" (click)="sharePlaylist()" type="submit">Valider</ion-button>
+  </div>
+</form>

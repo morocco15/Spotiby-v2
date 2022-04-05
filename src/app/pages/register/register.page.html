@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="text-align: center">S'enregistrer</ion-title>
+    <ion-icon size="large" name="arrow-back-outline" slot="start" (click)="pagePrecedente()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container" *ngIf="!this.authService.user">
+    <form [formGroup]="ionicForm" (ngSubmit)="register()" novalidate>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" required formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input type="password" required formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Confirmer mot de passe</ion-label>
+        <ion-input  type="password" required formControlName="passwordConfirm"></ion-input>
+      </ion-item>
+      <ion-button  expand="full" type="submit">S'enregistrer</ion-button>
+    </form>
+  </div>
+</ion-content>
+
